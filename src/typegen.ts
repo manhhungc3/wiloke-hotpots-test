@@ -2,55 +2,39 @@ export type Data = {
 postsCustoms: {
 variant: string;
 posts: {
-      items: {
-        title: string;
-        id?: string;
+    items: {
+      title: string;
+      id?: string;
+      image?: string;
+      content?: string;
+      slug?: string;
+      excerpt?: string;
+      createDate?: string;
+      modifiedDate?: string;
+      link?: string;
+      categories: {
+        name : string;
+        count : number;
+        link : string;
+      }[];
+      comments?: {
         content?: string;
-        slug?: string;
-        excerpt?: string;
         createDate?: string;
         modifiedDate?: string;
-        link?: string;
-        image?: {
-          small?: {
-            src: string;
-            width: number;
-            height: number;
-          };
-          medium?: {
-            src: string;
-            width: number;
-            height: number;
-          };
-          large?: {
-            src: string;
-            width: number;
-            height: number;
-          }
-        };
-        categories: {
-          name : string;
-          count : number;
-          link : string;
-        }[];
-        comments?: {
-          content?: string;
-          createDate?: string;
-          modifiedDate?: string;
-          authorName?: string;
-          authorIP?: string;
-          authorUrl?: string;
-          authorEmail?: string;
-        }[];
-        author?: {
-          id?: string;
-          authorName?: string;
-          authorEmail?: string;
-          authorUrl?: string;
-          avatar?: string;
-        };
+        authorName?: string;
+        authorIP?: string;
+        authorUrl?: string;
+        authorEmail?: string;
       }[];
-    }
+      author?: {
+        id?: string;
+        authorName?: string;
+        authorEmail?: string;
+        authorUrl?: string;
+        avatar?: string;
+      };
+    }[];
+  }
 height: number;
 };
 responsive: {
