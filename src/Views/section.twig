@@ -1,0 +1,48 @@
+{% set componentName = "wiloke-posts-elegant" %}
+
+{% set columnStyles = '--col-xs:' ~ data.responsive.xs ~ ';--col-sm:' ~ data.responsive.sm ~ ';--col-md:' ~ data.responsive.md ~ ';--col-lg:' ~ data.responsive.lg %}
+{% set gapStyles = '--gap-xs:' ~ data.responsive.gapXs ~ 'px;--gap-sm:' ~ data.responsive.gapSm ~ 'px;--gap-md:' ~ data.responsive.gapMd ~ 'px;--gap-lg:' ~ data.responsive.gapLg ~ 'px' %}
+
+{% set rowHeight = data.postsCustoms.height ? '--row-height: ' ~ data.postsCustoms.height ~ 'px;' : '' %}
+{% set posts = data.postsCustoms.posts.items %}
+{% set titleTypo = data.typography.titleTypo %}
+{% set dateTypo = data.typography.dateTypo %}
+{% set categoryTypo = data.typography.categoryTypo %}
+{% set datecommentTypoTypo = data.typography.dateTypo %}
+
+{% set enableNext = data.actions.enableNext %}
+{% set iconNext = data.actions.iconNext %}
+
+{% set enableCalendar = data.actions.enableCalendar %}
+{% set iconCalendar = data.actions.iconCalendar %}
+
+{% set responsive = data.responsive %}
+{% set carousel = data.carousel %}
+{% set colors = data.colors %}
+{% set translates = data.translates %}
+{% set border = data.border %}
+
+{% set background = colors.backgroundColor ? 'background-color:' ~ colors.backgroundColor ~ ';' : '' %}
+{% set colorTooltip = colors.secondary ? '--tooltip-color:' ~ colors.secondary ~ ';' : '' %}
+{% set backgroundTooltip = colors.primary ? '--tooltip-background:' ~ colors.primary ~ ';' : '' %}
+
+{% set backgroundPrimary = colors.primary ? 'background-color:' ~ colors.primary ~ ';' ~ '--color-primary:' ~ colors.primary ~ ';' : '' %}
+{% set backgroundSecondary = colors.secondary ? 'background-color:' ~ colors.secondary ~ ';' ~ '--color-secondary:' ~ colors.secondary ~ ';' : '' %}
+{% set backgroundGray9 = colors.gray9 ? 'background-color:' ~ colors.gray9 ~ ';' ~ '--color-gray9:' ~ colors.gray9 ~ ';' : '' %}
+
+{% set colorPrimarySvg = colors.primary  ? colors.primary : ''%}
+
+{% set colorPrimaryCssVariable = colors.primary ? 'color:' ~ colors.primary ~ ';' ~ '--color-primary:' ~ colors.primary ~ ';' : '' %}
+{% set colorSecondaryCssVariable = colors.secondary ? 'color:' ~ colors.secondary ~ ';' ~ '--color-secondary:' ~ colors.secondary ~ ';' : '' %}
+{% set colorGray7CssVariable = colors.gray7 ? 'color:' ~ colors.gray7 ~ ';' : '' %}
+{% set colorGray8CssVariable = colors.gray8 ? 'color:' ~ colors.gray8 ~ ';' : '' %}
+{% set colorGray9CssVariable = colors.gray9 ? 'color:' ~ colors.gray9 ~ ';' : '' %}
+{% set colorRatingCssVariable = colors.rating ? '--star-stroke-color:' ~ colors.rating ~ ';' ~ '--star-color:' ~ colors.rating ~ ';' : '' %}
+
+{% set borderWidth = border.borderItemWidth ? 'border-width: ' ~ border.borderItemWidth ~ 'px;' : '' %}
+{% set borderStyle = border.borderItemStyle ? 'border-style: ' ~ border.borderItemStyle ~ ';': '' %}
+{% set borderColor = border.borderItemColor ? 'border-color: ' ~ border.borderItemColor ~ ';' : '' %}
+{% set borderRadius = border.borderItemRadius ? 'border-radius: ' ~ border.borderItemRadius ~ 'px;' : '' %}
+
+<style>{{ data.customCSS.code }}</style>
+{% include "Containers/" ~ data.postsCustoms.variant ~ ".twig" %}

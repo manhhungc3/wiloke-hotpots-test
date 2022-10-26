@@ -1,0 +1,47 @@
+{% set componentName = "wiloke-posts-elegant" %}
+
+{% set maxPrice = item.amountPrice[0] %}
+{% set minPrice = item.amountPrice[1] %}
+
+<div data-row-id="{{item.id}}" class="{{ componentName }}-3 wiloke-3-container z:9 mb:-1px bdt:1px_solid_#E3E3E3 bdb:1px_solid_#E3E3E3 group* pt:100px|h pos:relative trs:0.3s_ease cur:pointer ov:hidden trs:all_0.3s mt:0! wc:padding-top" style=" {{borderWidth}} {{ borderStyle }} {{ borderColor }}{{ borderRadius }}; min-width: 100% !important">
+  {% set imageSize = 1400  %}
+  {# <a href="#" class="pos:absolute ins:0 z:-1 op:0 op:1*group-hover trs:all_0.3s bgz:cover bgp:center" style="background-image:url('{% if post.image %} {{ post.image.large.src | resize(imageSize) }} {% endif %}')">
+  </a> #}
+    <a href="{{post.link}}" class="pos:absolute ins:0 d:block "></a>
+    <div class="{{ componentName }}-3__image pos:absolute ins:0 z:-1 op:0 op:1*group-hover trs:all_0.3s bgz:cover bgp:center" style="background-image:url('{% if post.image %} {{ post.image.large.src | resize(imageSize) }} {% endif %}')"></div>
+    <div class="d:flex ai:center jc:space-between fld:row fld:column@+sm jc:center@+sm p:20px_30px p:20px_0@+sm">
+      <div class="d:flex ai:center fld:row fld:column@+sm jc:flex-start">
+        <div class="pr:pfs(20px,90px) pr:0@+sm">
+          <div class="{{ componentName }}-3__index wiloke-3-index w:72px h:72px bdrs:50% bd:2px_solid_#E3E3E3 bdc:#fff*group-hover c:#000 c:#fff*group-hover trs:all_0.3s d:flex jc:center ai:center fz:24px fw:500 lts:2px!" style="{{ colorSecondaryCssVariable }} {{ colorPrimaryCssVariable }} ">
+            {% if index < 10 %} 0{{index}} {% else %}
+            {{index}}
+            {% endif %}
+          </div>
+        </div>
+        <div class="maw:80% maw:100%@+sm">
+          <div class="d:flex jc:center@+sm ai:center p:15px_10px_0_10px@+sm">
+            {% if post.categories[0] %}
+            <div class=" d:flex ai:center" >
+              <a href="{{post.categories[0].link}}" class="{{ componentName }}-3__category wiloke-3-time td:none! ff:Lora fs:italic fz:14px ta:center@+sm fw:500 c:#464646 c:#fff*group-hover trs:all_0.3 lh:1.5" style="{{ categoryTypo }}  {{ colorSecondaryCssVariable }}{{ colorPrimaryCssVariable }}">{{post.categories[0].name}}</a>
+            </div>
+            {% endif %}
+            <div class="{{ componentName }}-3__time wiloke-3-time m:0_15px c:#464646 c:#fff*group-hover ff:Lora fs:italic fz:14px trs:all_0.3s lh:1.5" style="{{ colorSecondaryCssVariable }} {{ colorPrimaryCssVariable }}">•</div>
+            <div class="{{ componentName }}-3-time wiloke-3-time dateTypo ff:Lora fs:italic fz:14px ta:center@+sm fw:500 trs:all_.3s  c:#464646 c:#fff*group-hover trs:all_0.3s lh:1.5" style="{{ dateTypo }} {{ colorSecondaryCssVariable }}{{ colorPrimaryCssVariable }}">{{post.createDate|date("F j, Y")}}</div>
+
+            <div class="{{ componentName }}-3__time wiloke-3-time m:0_15px c:#464646 c:#fff*group-hover ff:Lora fs:italic fz:14px trs:all_0.3s lh:1.5" style="  {{ colorSecondaryCssVariable }}{{ colorPrimaryCssVariable }}">•</div>
+            <div class="{{ componentName }}-3__time wiloke-3-time m:0! ">
+              <a href="{{post.link}}" class="{{ componentName }}-3__comments wiloke-3-time commentTypo ff:Lora fs:italic c:#464646 c:#fff*group-hover trs:all_0.3s fz:14px ta:center@+sm fw:500 td:none! lh:1.5 d:block" style="{{ commentTypo }}  {{ colorSecondaryCssVariable }}{{ colorPrimaryCssVariable }}">
+                {{post.comments|length}} Comments
+              </a>
+            </div>
+          </div>
+          <div class="{{ componentName }}-3__title wiloke-3-title ff:Poppins fz:24px fw:500 pt:15px lines-2 lh:1.5 c:#1B113E c:#fff*group-hover ta:center@+sm" style=" {{ colorSecondaryCssVariable }}{{ colorGray9CssVariable }}">{{ post.title | truncate(40) }}</div>
+        </div>
+      </div>
+
+      <div class="{{ componentName }}-3__btnReadMore wiloke-3-btnReadMore fz:14px fw:600 lts:2px! tt:uppercase c:#000 c:#fff*group-hover whs:nowrap pt:15px@+sm pos:relative cnt:()|af pos:absolute|af b:-3px|af l:0|af h:2px|af bgc:#fff|af w:100%|af op:0|af op:1*group-hover|af" style="{{ colorSecondaryCssVariable }} {{colorPrimaryCssVariable}}">
+        {{translates.readMoreText}}
+      </div>
+    </div>
+
+</div>

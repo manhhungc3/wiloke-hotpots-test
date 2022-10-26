@@ -1,0 +1,42 @@
+{% set componentName = "wiloke-posts-elegant" %}
+
+<div data-row-id="{{post.id}}" class="{{componentName}}-2 group* mih:100% bgc:#fff ov:hidden pos:relative" style="{{background}} {{borderWidth}} {{ borderStyle }} {{ borderColor }}{{ borderRadius }};--star-stroke-color: #FEAA01;--star-color: #FEAA01;--tooltip-background: #000;--tooltip-color: #fff;--color-secondary:#fff;--color-primary:#cf2929;">
+  <div class="pos:relative ov:hidden">
+    <a href="{{post.link}}" class="pos:absolute ins:0"></a>
+    {% set imageSize = data.responsive.lg ? 1400 / data.responsive.lg : 400 %}
+    <div class="{{ componentName }}-2__image bgz:cover bgp:center ar:401/300" style="background-image: url('{% if post.image %} {{ post.image.large.src | resize(imageSize) }} {% endif %}')"></div>
+  </div>
+  <div class="p:30px_20px">
+    <div class="m:0_-10px d:flex fld:row fld:column@+sm  ">
+      <div class="p:0_10px d:flex fld:column fld:row@+sm">
+          <div class="{{componentName}}-2__year yearTypo mih:100%@+sm d:flex jc:center ai:center ff:Poppins p:10px_18px bd:2px_solid_#000 fz:18px fw:600 lts:2px!" style="{{yearTypo}} {{ colorPrimaryCssVariable }}">{{post.createDate|date("Y")}}</div>
+          <div class="d:flex ai:center mih:100%@+sm">
+            <div class="{{componentName}}-2__mounth dateTypo flxg:2 ff:Poppins mih:100% d:flex jc:center ai:center p:4px_10px bd:2px_solid_#000 mt:-2px m:0_0_0_-2px!@+sm tt:uppercase fz:14px fw:600 lts:2px!" style="{{dateTypo}} {{ colorPrimaryCssVariable }}">{{post.createDate|date("M")}}</div>
+            <div class="{{componentName}}-2__day dateTypo flxg:1 ff:Poppins mih:100% d:flex jc:center ai:center p:4px_9px bd:2px_solid_#000 mt:-2px ml:-2px m:0_0_0_-2px!@+sm fz:14px fw:600 lts:2px!" style="{{dateTypo}} {{ colorPrimaryCssVariable }}">{{post.createDate|date("d")}}</div>
+          </div>
+      </div>
+      <div class="p:0_10px mt:10px@+sm">
+        {% if post.title %}
+          <h3 class="m:0! lh:0!">
+            <a href="{{post.link}}" class="{{ componentName }}-2__title titleTypo ff:Poppins d:block td:none! c:#000 fz:18px fw:500 lh:1.5 op:0.7|h trs:0.3s lines-2" style="{{ titleTypo }} {{ colorGray9 }}">{{post.title | truncate(50)}}</a>
+          </h3>
+        {% endif %}
+          <div class="d:flex jc:flex-start ai:center pt:9px">
+            {% if post.categories[0] %}
+              <div class=" d:flex ai:center " >
+                <a href="{{post.categories[0].link}}" class="{{ componentName }}-2__category categoryTypo ff:Lora fs:italic td:none! fz:13px fw:500 c:#464646 lh:1.5 d:block" style="{{ categoryTypo }} {{ colorPrimaryCssVariable }}">{{post.categories[0].name}}</a>
+              </div>
+            {% endif %}
+            <div class="m:0_15px c:#464646 ff:Lora fs:italic fz:13px fw:500 lh:1.5" style=" {{ colorPrimaryCssVariable }}">•</div>
+            <div class=" m:0! ">
+              <a href="{{post.link}}" class="{{ componentName }}-2__comments commentTypo ff:Lora fs:italic c:#464646 fz:13px fw:500 td:none! d:block lh:1.5" style="{{ commentTypo }} {{ colorPrimaryCssVariable }}">
+                {{post.comments|length}} Comments
+              </a>
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="pos:absolute b:0 l:0 w:100% h:1px bgc:#E3E3E3"></div>
+</div>

@@ -1,0 +1,53 @@
+{% set componentName = "wiloke-posts-elegant" %}
+
+<div class="{{ componentName }}-4 group* mih:100% pos:relative bgc:#fff  trs:0.3s_ease cur:pointer d:flex  fld:column" style="{{background}} {{borderWidth}} {{ borderStyle }} {{ borderColor }}{{ borderRadius }}">
+  <div class="d:flex fxw:wrap m:0_-15px mb:30px">
+    <div class="w:40% w:100%@+sm p:0_15px ">
+      <div class="pos:relative ">
+        <a href="{{post.link}}" class="pos:absolute ins:0"></a>
+        {% set imageSize = data.responsive.lg ? 1400 / data.responsive.lg : 400 %}
+        <div class="{{ componentName }}-4__image wiloke-5-borderColor bgz:cover bgp:center ar:1 pos:relative cnt:()|af ins:0|af bd:2px_solid_#000|af pos:absolute|af op:0|af op:1*group-hover|af trs:0.3s|af trf:translate(10px,10px)*group-hover|af" style="background-image: url('{% if post.image %} {{ post.image.large.src | resize(imageSize) }} {% endif %}');{{ colorPrimaryCssVariable }}"></div>
+
+      </div>
+    </div>
+    <div class="w:60% w:100%@+sm p:0_15px ">
+      <div class="p:18px_18px_18px_0 p:10px@+lg!">
+        <div class="d:flex ai:center fxw:wrap">
+          {% if post.categories[0] %}
+          <div class="d:flex ai:center " >
+            <a href="{{post.categories[0].link}}" class="{{ componentName }}-4__category td:none! fz:14px tt:uppercase fw:600 c:#AB9871 lts:2px! lh:1.5 d:inline-block" style="{{ categoryTypo }}{{ colorPrimaryCssVariable }}">{{post.categories[0].name}}</a>
+          </div>
+          {% endif %}
+          <div class="m:0_15px c:#D2D2D2 ff:Poppins fz:14px">—</div>
+          <div class=" m:0! d:flex ai:center">
+            <a href="{{post.link}}" class="{{ componentName }}-4__comments commentTypo ff:Poppins fz:14px fw:500 c:#4E4E4E mr:3px td:none! d:block" style="{{ commentTypo }} {{ colorSecondaryCssVariable }}">
+              {{post.comments|length}}
+            </a>
+            <span class="{{ componentName }}-4__comments commentTypo ff:Lora fz:14px fw:500 fs:italic c:#737373 d:block" style="{{ commentTypo }} {{ colorSecondaryCssVariable }} ">Comments</span>
+          </div>
+        </div>
+
+        {% if post.title %}
+          <h3 class="m:0! lh:0! pt:17px">
+            <a href="{{post.link}}" class="{{ componentName }}-4__title wiloke-5-title titleTypo tt:uppercase ff:Poppins td:none! fz:18px lts:1px! fw:500 lh:1.7 c:#000 op:0.7|h trs:0.3s lines-2" style="{{ titleTypo }}{{ colorPrimaryCssVariable }} {{colorGray9CssVariable}}"> {{post.title | truncate(50)}} </a>
+          </h3>
+        {% endif %}
+        <div class="d:flex ai:center pt:28px">
+          <div class="{{ componentName }}-4__btnReadMore wiloke-4-btnReadMore h:42px p:11px_18px maw:127px whs:nowrap bgc:#fff c:#000 bd:2px_solid_#000 lts:2px! fz:13px fw:600 tt:uppercase d:flex jc:center ai:center mr:-2px" style="{{ colorPrimaryCssVariable }}">{{ translates.readMoreText }}</div>
+          <div class="{{ componentName }}-4__btnNext wiloke-4-btnNext cur:pointer w:42px h:42px d:flex jc:center ai:center td:none! bgc:#fff c:#000 bd:2px_solid_#000"  style="{{ colorPrimaryCssVariable }}">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="13" viewBox="0 0 18 13" fill="none">
+                <path class="wiloke-4-btnNextSvg" d="M11.7734 1.03125L10.9922 1.8125C10.8359 2.00781 10.8359 2.28125 11.0312 2.47656L14.1562 5.48438H0.71875C0.445312 5.48438 0.25 5.71875 0.25 5.95312V7.04688C0.25 7.32031 0.445312 7.51562 0.71875 7.51562H14.1562L11.0312 10.5625C10.8359 10.7578 10.8359 11.0312 10.9922 11.2266L11.7734 12.0078C11.9688 12.1641 12.2422 12.1641 12.4375 12.0078L17.5938 6.85156C17.75 6.65625 17.75 6.38281 17.5938 6.1875L12.4375 1.03125C12.2422 0.875 11.9688 0.875 11.7734 1.03125Z" fill="black"/>
+              </svg>
+              </svg>
+            </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <div class=" h:1px bgc:#E3E3E3 mt:auto"></div>
+</div>
+
+
+
+

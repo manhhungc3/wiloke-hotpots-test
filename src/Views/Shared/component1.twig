@@ -1,0 +1,43 @@
+{% set componentName = "wiloke-posts-elegant" %}
+
+<div  class="{{ componentName }}-1 group* trs:0.3s_ease cur:pointer bgc:#fff mih:100% d:flex fld:column" style="{{background}} {{borderWidth}} {{ borderStyle }} {{ borderColor }}{{ borderRadius }};">
+  <div class="pos:relative ">
+    <a href="{{post.link}}" class="pos:absolute ins:0 z:3"></a>
+    {% set imageSize = data.responsive.lg ? 1400 / data.responsive.lg : 400 %}
+      <div class="{{ componentName }}-1__image bgz:cover bgp:center pt:100% ar:255/294 m:0_20px_20px_0" style="background-image: url('{% if post.image %} {{ post.image.large.src | resize(imageSize) }} {% endif %}')"></div>
+    {% if post.categories[0] %}
+      <div class=" pos:absolute t:10px l:10px ">
+        <a href="{{post.categories[0].link}}" class="{{ componentName }}-1__category categoryTypo td:none! ff:Poppins d:block fz:12px fw:600 p:8px_12px bgc:#000  tt:uppercase c:#fff ta:center lts:2px! tt:uppercase" style="{{ categoryTypo }} {{ backgroundSecondary }} {{ colorPrimaryCssVariable }} ">{{post.categories[0].name}}</a>
+      </div>
+    {% endif %}
+    <div class="pos:absolute b:0 r:0 z:8">
+      <div class="{{ componentName }}-1__iconSvg wiloke-1-btnNext pos:relative cur:pointer w:40px h:40px d:inline-flex jc:center ai:center td:none! c:#fff c:#FF6767|h bgc:#000 trs:0.3s cnt:()|af pos:absolute|af ins:0|af z:-1|af trf:translate(0px,0px)|af bgc:#FF6767|af op:0|af trs:0.3s|af"  style="{{ colorSecondaryCssVariable }} {{colorPrimaryCssVariable}} {{ backgroundGray9 }}">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="13" viewBox="0 0 18 13" fill="none">
+          <path class="wiloke-1-btnNextSvg" d="M11.7734 1.03125L10.9922 1.8125C10.8359 2.00781 10.8359 2.28125 11.0312 2.47656L14.1562 5.48438H0.71875C0.445312 5.48438 0.25 5.71875 0.25 5.95312V7.04688C0.25 7.32031 0.445312 7.51562 0.71875 7.51562H14.1562L11.0312 10.5625C10.8359 10.7578 10.8359 11.0312 10.9922 11.2266L11.7734 12.0078C11.9688 12.1641 12.2422 12.1641 12.4375 12.0078L17.5938 6.85156C17.75 6.65625 17.75 6.38281 17.5938 6.1875L12.4375 1.03125C12.2422 0.875 11.9688 0.875 11.7734 1.03125Z" fill="white"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <div class="p:7px_0_20px d:flex flx:auto fld:column">
+      <div>
+        {% if post.title %}
+          <h3 class="m:0! lh:0!">
+            <a href="{{post.link}}" class="{{ componentName }}-1__title titleTypo ff:Poppins td:none! c:#000 fz:18px fw:500 lh:1.5 op:0.6!|h trs:0.3s lines-2" style="{{ titleTypo }} {{colorGray9CssVariable}}">{{post.title | truncate(50)}}</a>
+          </h3>
+        {% endif %}
+      </div>
+      <div class="mt:auto">
+        <div class="mt:20px w:20% h:2px bgc:#E3E3E3"></div>
+        <div class="pt:20px ai:center d:flex " >
+          <div class="{{ componentName }}-1__date dateTypo ff:Lora fs:italic fz:13px fw:500 trs:all_.3s  c:#464646" style="{{ dateTypo }} {{ colorPrimaryCssVariable }}">{{post.createDate|date("F j, Y")}}</div>
+          <div class="m:0_15px c:#464646 ff:Lora fs:italic fz:13px" style="{{ colorPrimaryCssVariable }}">•</div>
+          <div class=" m:0! ">
+            <a href="{{post.link}}" class="{{ componentName }}-1__comments commentTypo ff:Lora fs:italic c:#464646 fz:13px fw:500 td:none! d:block" style="{{ commentTypo }} {{ colorPrimaryCssVariable }}">
+              {{post.comments|length}} Comments
+            </a>
+          </div>
+        </div>
+      </div>
+  </div>
+</div>
